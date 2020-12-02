@@ -22,7 +22,7 @@ const userSchema=mongoose.Schema({
         unique: 1
     },
     password:{
-        type:String,
+        type: String,
         required: true,
         minlength:8
     },
