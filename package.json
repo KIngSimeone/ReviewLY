@@ -1,0 +1,11 @@
+{
+  "name": "reviewly",
+  "version": "1.0.0",
+  "description": "\"A RESTFul API's for useres to review previous apartments\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simeon Umih",
+  "license": "ISC"
+}
