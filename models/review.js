@@ -1,14 +1,27 @@
 var mongoose=require('mongoose');
 
 const reviewSchema=mongoose.Schema({
-    reviews:{
+    user:{
+        type: Schema.Types.ObjectId, ref: 'User'
+    },
+    general:{
+        type:String,
+        required: true,
+        maxlength: 500
+    },    
+    landlord:{
         type:String,
         required: true,
         maxlength: 500
     },
-    user:{
-        [
-            {type: Schema.Types.ObjectId, ref: 'User'}
-          ]
+    environment:{
+        type:String,
+        required: true,
+        maxlength: 500
     },
-})
+    amenities:{
+        type:String,
+        required: true,
+        maxlength: 500
+    },
+});
