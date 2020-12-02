@@ -80,7 +80,7 @@ app.post('/api/login', function(req,res){
 });
 
 // User view profile
-app.get('/api/profile', auth, function(req,res){
+app.get('/api/profile',auth,function(req,res){
     res.json({
         isAuth: true,
         id: req.user._id,
@@ -88,6 +88,14 @@ app.get('/api/profile', auth, function(req,res){
         name: req.user.firstname + req.user.lastname
     })
 })
+
+//logout user
+app.get('/api/logout',auth,function(req,res){
+    req.user.deleteToken(req.token,(err,user)=>{
+        if(err) return res.status(400).send(err);
+        res.sendStatus(200);
+    });
+});
 
 // listening port
 const PORT=process.env.PORT||3000;
