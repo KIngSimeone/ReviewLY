@@ -4,7 +4,7 @@ const bodyparser=require('body-parser');
 const cookieParser=require('cookie-parser');
 const db=require('./config/config').get(process.env.NODE_ENV)
 const User=require('./models/user');
-const [auth]=require('./middlewares/auth');
+const {auth}=require('./middlewares/auth');
 
 
 const app=express();

@@ -1,3 +1,11 @@
+const {MongoClient} = require('mongodb');
+
+const uri = "mongodb+srv://simeone:<Jamesrodriguez10!>@cluster0.9xfmo.mongodb.net/<dbname>?retryWrites=true&w=majority"
+
+const client = new MongoClient(uri);
+
+
+
 const config={
     production :{
         SECRET: process.env.SECRET,
@@ -5,7 +13,8 @@ const config={
     },
     default : {
         SECRET: 'mysecretkey',
-        DATABASE: 'mongodb://localhost:27017/Users'
+        DATABASE: "mongodb+srv://simeone:Jamesrodriguez10!@cluster0.9xfmo.mongodb.net/<dbname>?retryWrites=true&w=majority"
+        //DATABASE: 'mongodb://localhost:27017/Users'
     }
 }
 
