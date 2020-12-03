@@ -4,6 +4,7 @@ const bodyparser=require('body-parser');
 const cookieParser=require('cookie-parser');
 const db=require('./config/config').get(process.env.NODE_ENV)
 const User=require('./models/user');
+const Review=require('./models/review')
 const {auth}=require('./middlewares/auth');
 
 
@@ -40,7 +41,7 @@ app.post('/api/register',function(req,res){
             if(err) {console.log(err);
                 return res.status(400).json({ success : false});}
             res.status(200).json({
-                succes:true,
+                success:true,
                 user : doc
             });
         });
@@ -96,6 +97,21 @@ app.get('/api/logout',auth,function(req,res){
         res.sendStatus(200);
     });
 });
+
+// create review
+app.post('api/review', auth, function(req,res) {
+    // collect review items from request body
+    const newreview = new Review(req.body);
+        newreview.user = req.user;
+        newreview.save((err,doc)=>{
+            if(err) {console.log(err);
+                return res.status(400).json({message:"Failed to create review" });}
+            res.status(200).json({
+                message:"Successfully create review",
+                review : doc
+            })
+        })
+})
 
 // listening port
 const PORT=process.env.PORT||3000;
