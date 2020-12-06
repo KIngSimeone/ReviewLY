@@ -99,7 +99,7 @@ app.get('/api/logout',auth,function(req,res){
 });
 
 // create review
-app.post('api/review', auth, function(req,res) {
+app.post('/api/review', auth, function(req,res) {
     // collect review items from request body
     const newreview = new Review(req.body);
         newreview.user = req.user;
@@ -109,9 +109,9 @@ app.post('api/review', auth, function(req,res) {
             res.status(200).json({
                 message:"Successfully create review",
                 review : doc
-            })
-        })
-})
+            });
+        });
+});
 
 // listening port
 const PORT=process.env.PORT||3000;
